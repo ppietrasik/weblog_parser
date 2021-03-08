@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../webpage_unique_views'
+require_relative '../unique_views_count'
 
 module WeblogParser
     module Analyzers
@@ -10,7 +10,7 @@ module WeblogParser
                     .group_by(&:webpage)
                     .transform_values(&by_uniq_ip)
                     .transform_values(&:count)
-                    .map { |webpage, unique_views_count| WebpageUniqueViews.new(webpage, unique_views_count) }
+                    .map { |webpage, unique_views| UniqueViewsCount.new(webpage, unique_views) }
             end
 
             private

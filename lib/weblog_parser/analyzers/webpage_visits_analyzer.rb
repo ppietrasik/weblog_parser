@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../webpage_visits'
+require_relative '../visits_count'
 
 module WeblogParser
     module Analyzers
@@ -9,7 +9,7 @@ module WeblogParser
                 log_entries
                     .group_by(&:webpage)
                     .transform_values(&:count)
-                    .map { |webpage, visits_count| WebpageVisits.new(webpage, visits_count) }
+                    .map { |webpage, visits| VisitsCount.new(webpage, visits) }
             end
         end
     end

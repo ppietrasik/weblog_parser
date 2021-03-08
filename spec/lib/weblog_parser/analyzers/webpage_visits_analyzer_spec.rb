@@ -11,8 +11,8 @@ RSpec.describe WeblogParser::Analyzers::WebpageVisitsAnalyzer do
         it 'returns correct objects' do
             expect(method_call).to match(
                 [
-                    an_object_having_attributes(webpage: '/index', visits_count: 2),
-                    an_object_having_attributes(webpage: '/about', visits_count: 1)
+                    an_object_having_attributes(webpage: '/index', visits: 2),
+                    an_object_having_attributes(webpage: '/about', visits: 1)
                 ]
             )
         end
@@ -23,8 +23,8 @@ RSpec.describe WeblogParser::Analyzers::WebpageVisitsAnalyzer do
             it 'returns correct object' do
                 expect(method_call).to match(
                     [
-                        an_object_having_attributes(webpage: '/index', visits_count: 1),
-                        an_object_having_attributes(webpage: '/about', visits_count: 2)
+                        an_object_having_attributes(webpage: '/index', visits: 1),
+                        an_object_having_attributes(webpage: '/about', visits: 2)
                     ]
                 )
             end
