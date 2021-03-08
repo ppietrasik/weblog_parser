@@ -15,8 +15,8 @@ RSpec.describe WeblogParser::LogsReport do
         end
 
         it 'returns correct output' do
-            expect(WeblogParser::Analyzers::WebpageVisitsAnalyzer).to receive(:call).with(log_entries).and_call_original
-            expect(WeblogParser::Analyzers::WebpageUniqueViewsAnalyzer).to receive(:call).with(log_entries).and_call_original
+            expect(WeblogParser::VisitsCount).to receive(:from_log_entries).with(log_entries).and_call_original
+            expect(WeblogParser::UniqueViewsCount).to receive(:from_log_entries).with(log_entries).and_call_original
 
             expect(method_call).to eq(
                 <<~OUTPUT

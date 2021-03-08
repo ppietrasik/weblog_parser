@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative './analyzers/webpage_visits_analyzer'
-require_relative './analyzers/webpage_unique_views_analyzer'
+require_relative './visits_count'
+require_relative './unique_views_count'
 
 module WeblogParser
     class LogsReport
@@ -12,10 +12,10 @@ module WeblogParser
         def present
             <<~REPORT
             *** List of webpages visits ***
-            #{format_results(webpage_visits)}
+            #{format_results(visits_counts)}
 
             *** List of webpages unique views ***
-            #{format_results(webpage_unique_views)}
+            #{format_results(unique_views_counts)}
             REPORT
         end
 
@@ -23,12 +23,12 @@ module WeblogParser
 
         attr_reader :log_entries
 
-        def webpage_visits
-            Analyzers::WebpageVisitsAnalyzer.call(log_entries).sort.reverse
+        def visits_counts
+            VisitsCount.from_log_entries(log_entries).sort.reverse
         end
 
-        def webpage_unique_views
-            Analyzers::WebpageUniqueViewsAnalyzer.call(log_entries).sort.reverse
+        def unique_views_counts
+            UniqueViewsCount.from_log_entries(log_entries).sort.reverse
         end
 
         def format_results(results)

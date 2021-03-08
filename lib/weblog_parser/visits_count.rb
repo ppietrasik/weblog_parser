@@ -2,6 +2,13 @@
 
 module WeblogParser
     class VisitsCount
+        def self.from_log_entries(log_entries)
+            log_entries
+                .group_by(&:webpage)
+                .transform_values(&:count)
+                .map { |webpage, visits| new(webpage, visits) }
+        end
+
         def initialize(webpage, visits)
             @webpage = webpage
             @visits = visits
