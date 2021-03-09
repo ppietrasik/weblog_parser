@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-source "https://rubygems.org"
-
-git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+source 'https://rubygems.org'
 
 group :development do
-    gem 'pry'
+  gem 'pry'
+  gem 'rubocop-shopify', require: false
 end
 
 group :test do
-    gem 'rspec'
+  gem 'rspec'
 end

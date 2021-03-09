@@ -37,7 +37,7 @@ RSpec.describe WeblogParser::FileParser do
                 end
             end
 
-            context 'with valid logs format' do
+            context 'with invalid logs format' do
                 let(:logs) do
                     <<~LOGS
                     /help_page/1 126.318.035.038
